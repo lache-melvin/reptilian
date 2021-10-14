@@ -1,0 +1,13 @@
+{
+    "name": "Reptilian Dev Container",
+    "dockerComposeFile": [
+        "./docker-compose.yml"
+    ],
+    "service": "reptilian-cli-dev",
+    "workspaceFolder": "/app",
+    "extensions": [
+        "ms-dotnettools.csharp",
+        "josefpihrt-vscode.roslynator"
+    ],
+    "shutdownAction": "stopCompose"
+}
