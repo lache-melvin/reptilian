@@ -7,6 +7,10 @@
 
   <ItemGroup>
     <PackageReference Include="FluentMigrator.Runner" Version="3.3.1" />
+    <!-- Sometimes VSCode needs a temporary hint as to where things are... -->
+    <!-- <PackageReference Include="FluentMigrator.Runner" Version="3.3.1">
+        <HintPath>bin/Debug/netcoreapp3.1/FluentMigrator.Runner.dll</HintPath>
+    </PackageReference> -->
   </ItemGroup>
 
 </Project>
