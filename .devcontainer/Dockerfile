@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1
+FROM mcr.microsoft.com/dotnet/sdk:5.0.402
 
 # -m creates home folder for reptile
 # -s sets shell (bash)

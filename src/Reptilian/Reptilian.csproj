@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentMigrator.Runner" Version="3.3.1" />
     <!-- Sometimes VSCode needs a temporary hint as to where things are... -->
     <!-- <PackageReference Include="FluentMigrator.Runner" Version="3.3.1">
-        <HintPath>bin/Debug/netcoreapp3.1/FluentMigrator.Runner.dll</HintPath>
+        <HintPath>bin/Debug/net5.0/FluentMigrator.Runner.dll</HintPath>
     </PackageReference> -->
   </ItemGroup>
 
