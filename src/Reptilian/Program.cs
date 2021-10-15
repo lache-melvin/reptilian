@@ -1,4 +1,5 @@
 ﻿using System;
+using Reptilian.DataAccess;
 
 namespace Reptilian
 {
@@ -6,6 +7,7 @@ namespace Reptilian
     {
         static void Main(string[] args)
         {
+            Database.RunMigrations();
             Console.WriteLine("Hello World!");
         }
     }
