@@ -9,3 +9,5 @@ RUN useradd -m -s $(which bash) reptile
 RUN mkdir /app && chown reptile:reptile /app
 
 USER reptile
+
+ENV PATH "$PATH:/home/reptile/.dotnet/tools"
