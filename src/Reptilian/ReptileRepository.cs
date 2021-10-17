@@ -12,17 +12,24 @@ namespace Reptilian
 
         public Guid Save(Reptile reptile)
         {
-            _reptile = reptile;
-            _reptile.Id = Guid.NewGuid();
-            return _reptile.Id;
+            using (var session = _sessionFactory.OpenSession())
+            {
+                var id = (Guid)session.Save(reptile);
+                session.Flush();
+                session.Close();
+                return id;
+            }
         }
 
         public Reptile GetById(Guid id)
         {
-            return _reptile;
+            using (var session = _sessionFactory.OpenSession())
+            {
+                var reptile = session.Get<Reptile>(id);
+                return reptile;
+            }
         }
 
-        private Reptile _reptile;
         private readonly ISessionFactory _sessionFactory;
     }
 }
