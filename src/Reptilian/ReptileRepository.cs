@@ -1,9 +1,15 @@
 using System;
+using NHibernate;
 
 namespace Reptilian
 {
     public class ReptileRepository
     {
+        public ReptileRepository(ISessionFactory sessionFactory)
+        {
+            _sessionFactory = sessionFactory;
+        }
+
         public Guid Save(Reptile reptile)
         {
             _reptile = reptile;
@@ -17,5 +23,6 @@ namespace Reptilian
         }
 
         private Reptile _reptile;
+        private readonly ISessionFactory _sessionFactory;
     }
 }

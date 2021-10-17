@@ -7,6 +7,9 @@
 
   <ItemGroup>
     <PackageReference Include="FluentMigrator.Runner" Version="3.3.1" />
+    <PackageReference Include="FluentNHibernate" Version="3.1.0" />
+    <PackageReference Include="NHibernate" Version="5.3.10" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
     <!-- Sometimes VSCode needs a temporary hint as to where things are... -->
     <!-- <PackageReference Include="FluentMigrator.Runner" Version="3.3.1">
         <HintPath>bin/Debug/net5.0/FluentMigrator.Runner.dll</HintPath>

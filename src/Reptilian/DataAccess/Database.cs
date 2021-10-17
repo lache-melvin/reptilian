@@ -1,6 +1,9 @@
 using System;
 using FluentMigrator.Runner;
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
 using Microsoft.Extensions.DependencyInjection;
+using NHibernate;
 
 namespace Reptilian.DataAccess
 {
@@ -30,6 +33,25 @@ namespace Reptilian.DataAccess
                 .ScanIn(typeof(Database).Assembly).For.Migrations())
             .AddLogging(lb => lb.AddFluentMigratorConsole())
             .BuildServiceProvider(false);
+        }
+
+        // Session factories are expensive to create (usually create one instance
+        // within application). Session factory will manage the pool of sessions.
+        // A session (a connection with the DB) is cheap to create - whenever you
+        // need to interact with the DB, get a session from the session factory,
+        // and close it once you are done.
+        public static ISessionFactory CreateSessionFactory()
+        {
+            RunMigrations();
+            return Fluently.Configure()
+            .Database(
+                MsSqlConfiguration.MsSql2012.ConnectionString(ConnectionString)
+            )
+            .Mappings(m => m.FluentMappings
+                .AddFromAssemblyOf<Database>()
+                .Conventions.Add(FluentNHibernate.Conventions.Helpers.ForeignKey.EndsWith("Id"))
+            )
+            .BuildSessionFactory();
         }
 
         /// <summary>

@@ -1,4 +1,6 @@
 using NUnit.Framework;
+using NHibernate;
+using Reptilian.DataAccess;
 
 namespace Reptilian.Tests
 {
@@ -7,12 +9,13 @@ namespace Reptilian.Tests
         [SetUp]
         public void Setup()
         {
+            _sessionFactory = Database.CreateSessionFactory();
         }
 
         [Test]
         public void SaveRead()
         {
-            var repository = new ReptileRepository();
+            var repository = new ReptileRepository(_sessionFactory);
             const string reptileName = "Steve";
             const string reptileBreed = "Chameleon";
             var reptile = new Reptile { Name = reptileName, Breed = reptileBreed };
@@ -20,5 +23,7 @@ namespace Reptilian.Tests
             var retrieved = repository.GetById(reptileId);
             Assert.AreEqual(reptileName, retrieved.Name);
         }
+
+        private ISessionFactory _sessionFactory;
     }
 }
