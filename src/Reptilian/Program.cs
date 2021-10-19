@@ -8,7 +8,14 @@ namespace Reptilian
         static void Main(string[] args)
         {
             Database.RunMigrations();
-            Console.WriteLine("Hello World!");
+
+            Console.Clear();
+            Display.ShowWelcome();
+
+            Display.ShowMenu();
+            var choice = Display.GetUserChoice();
+
+            Console.WriteLine("\n");
         }
     }
 }
