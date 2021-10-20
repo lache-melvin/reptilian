@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using NHibernate;
 
 namespace Reptilian
@@ -12,6 +14,11 @@ namespace Reptilian
         public Guid Save(Reptile reptile)
         {
             return InTx(session => (Guid)session.Save(reptile));
+        }
+
+        public List<Reptile> GetReptiles()
+        {
+            return InTx(session => session.Query<Reptile>().ToList());
         }
 
         public Reptile GetById(Guid id)
