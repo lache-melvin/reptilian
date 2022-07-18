@@ -18,15 +18,13 @@ git clone https://github.com/lache-melvin/reptilian.git
 
 cd reptilian
 
+# Copy the .env.example file to an .env file
+cp .env{.example,}
+
 # Open the repository in VSCode
 code .
 ```
 
-
 - In VSCode, when the prompt appears, select `Reopen in Container` and wait for everything to install
     - This may take a while the first time as the docker images will likely need to be pulled from DockerHub
-- In a terminal instance inside VSCode, copy the .env.example file to an .env file
 
-```
-cp .env{.example,}
-```
